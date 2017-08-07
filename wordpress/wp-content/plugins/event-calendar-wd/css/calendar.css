@@ -124,6 +124,7 @@
 .ecwd_theme_calendar table.cal_blue.ecwd_calendar_container .current-day .day-number {
     color:#fdfefe;
     background:#10738B;
+    text-align: right;
 }
 @media only screen and (max-width: 768px){
 
@@ -263,6 +264,7 @@
 .ecwd_theme_calendar .ecwd_calendar td .day-number{
     background:#E0E0E0;
     color:#5C5C5C;
+    text-align: right;
 }
 
 /*############FILTERS##############*/
