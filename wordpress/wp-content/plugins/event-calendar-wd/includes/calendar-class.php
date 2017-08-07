@@ -681,12 +681,7 @@
                 $prev_date = $previous['day'];
             }
             $this->previousmonth = ($this->getMonth($previous['year'] . '-' . $previous['month'], $this->monthnames));
-            if ($this->widget == 1) {
-                $previoustext = '<span><</span>';
-            } else {
-                $previoustext = '<span><</span><span class="month-name"> ' . __($this->previousmonth, 'ecwd') . ' ' . $prev_date . '</span>';
-            }
-            echo $dateparam;
+            $previoustext = '<span><</span>';
             $html = '<div class="previous"><a href="?date=' . $dateparam . '&t=' . $this->displaytype . '" rel="noindex, nofollow">' . $previoustext . '</a></div>';
             return $html;
         }
@@ -785,12 +780,7 @@
                 $next_date = $next['day'];
             }
             $this->nextmonth = ($this->getMonth($next['year'] . '-' . $next['month'], $this->monthnames));
-            if ($this->widget == 1) {
-                $nexttext = '<span>></span>';
-            } else {
-                $divider  = $this->monthselector === false ? '&nbsp;|&nbsp;' : '';
-                $nexttext = '<span class="month-name">' . $next_date . ' ' . $divider . __($this->nextmonth, 'ecwd') . ' </span><span>></span>';
-            }
+            $nexttext = '<span>></span>';
             $html = '<div class="next"><a href="?date=' . $dateparam . '&t=' . $this->displaytype . '" rel="noindex, nofollow">' . $nexttext . '</a></div>';
             return $html;
         }
