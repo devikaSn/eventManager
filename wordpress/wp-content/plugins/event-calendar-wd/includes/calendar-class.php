@@ -581,7 +581,7 @@
                 $next_dateparam     = $this->getWeekFirstDayDate($next_year['year'] . '-' . $next_year['month'] . '-' . $next_year['day']);
             }
             $html .= '<div class="current-month">
-					' . $this->year . '
+					
 					<div>';
             if ($this->displaytype !== 'week' && $this->displaytype !== '4day' && $this->displaytype !== 'day') {
                 $html .= __($this->monthname, 'ecwd');
@@ -597,7 +597,7 @@
                     $html .= __($this->monthname, 'ecwd') . ' ' . $this->day;
                 }
             }
-            $html .= '		</div>
+            $html .= '	&nbsp; &nbsp;' . $this->year . '	</div>
 				</div>';
             $html .= $this->cal_next(); // next month link
             $current_date_link = "?date=" . $this->year . "-" . $this->month . "-" . $this->day;
@@ -686,6 +686,7 @@
             } else {
                 $previoustext = '<span><</span><span class="month-name"> ' . __($this->previousmonth, 'ecwd') . ' ' . $prev_date . '</span>';
             }
+            echo $dateparam;
             $html = '<div class="previous"><a href="?date=' . $dateparam . '&t=' . $this->displaytype . '" rel="noindex, nofollow">' . $previoustext . '</a></div>';
             return $html;
         }
