@@ -1,0 +1,178 @@
+
+body { 
+	text-align: center;
+}
+
+#wrapper { 
+	display: block;
+	width:100%; margin:0px auto; 
+}
+
+#header { 
+	/*border: 10px #041E37 solid;*/
+    background-color: #041E37;
+    color: white;
+    padding-top: 300px;
+    overflow: auto;
+    text-align: center;
+    background-image: url('assets/images/header.jpg');
+    background-repeat:no-repeat;
+	background-size:cover;
+	background-position: right;
+
+}
+
+
+#header h4 {
+	color: #D4E6F1;
+}
+
+#content {
+  	width: 75%;
+  	border: 2px ##D4E6F1 solid; 
+  	float: left; 
+  	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-color: white;
+}
+
+#content h1, h2, h3, h4 {
+	color: #2C3E50;
+}
+
+#content p {
+	color: black;
+}
+
+#sidebar { 
+ 	width: 24%;
+ 	float: left; 
+ 	color: #041E37;
+}
+
+#sidebar ul  {
+	color: #041E37;
+}
+
+#delimiter {
+ 	clear: both;
+}
+
+#footer { 
+	padding-top: 5px;
+    padding-bottom: 5px;
+	background-color: #F1C40F;
+	color: #041E37;
+	
+}
+
+/*--------------------------------------------------------------
+12.0 Navigation
+--------------------------------------------------------------*/
+
+.navigation-top {
+	background: #fff;
+	border-bottom: 1px solid #eee;
+	border-top: 1px solid #eee;
+	font-size: 16px;
+	font-size: 1rem;
+	position: relative;
+}
+
+.navigation-top .wrap {
+	max-width: 1000px;
+	padding: 0;
+}
+
+.navigation-top a {
+	color: #222;
+	font-weight: 600;
+	-webkit-transition: color 0.2s;
+	transition: color 0.2s;
+}
+
+.navigation-top .current-menu-item > a,
+.navigation-top .current_page_item > a {
+	color: #767676;
+}
+
+.main-navigation {
+	clear: both;
+	display: block;
+}
+
+.main-navigation ul {
+	background: #fff;
+	list-style: none;
+	margin: 0;
+	padding: 0 1.5em;
+	text-align: left;
+}
+
+
+.main-heading-container {
+	float: left;
+    margin-left: 5%;
+}
+
+.sub-heading-container {
+	float: left;
+    text-align: left;
+}
+
+.title {
+ 	font-size: 11pt; 
+ 	font-family: verdana; 
+ 	font-weight: bold; 
+}
+
+a {
+	width: 100%;
+    color: #041E37;
+
+}
+
+a:link, a:visited { 
+    text-decoration: none;
+    cursor: auto;
+}
+
+img {
+	width: 100%;
+	height: auto;
+}
+
+
+/* Custom media queries */
+
+@media only screen and (max-width: 1024px) {
+	#content {
+		width: 99.4%;
+	}
+	#sidebar {
+		width: 99.4%;
+		margin-left: 0px;
+	}
+	#sidebar ul li {
+		width: 100%;
+		overflow: hidden;
+		color: #041E37;
+	}
+}
+
+@media only screen and (max-width: 650px) {
+	.main-heading-container {
+		text-align: center;
+		width: 100%;
+		margin-left: 0%;
+	}
+
+	.sub-heading-container {
+	    text-align: center;
+	    width: 100%;
+		margin-left: 0%;
+	}
+}
+
+
