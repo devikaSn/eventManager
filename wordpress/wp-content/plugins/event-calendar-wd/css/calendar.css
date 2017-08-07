@@ -13,7 +13,7 @@
     text-align:center;
 }
 .ecwd_theme_calendar table.cal_blue.ecwd_calendar_container .weekend {
-    background: #EDEDED;
+    background: white;
 }
 
 .ecwd_theme_calendar table.cal_blue.ecwd_calendar_container .normal-day-heading,
@@ -223,7 +223,7 @@
 
 
 .ecwd_theme_calendar .calendar-head{
-    background: #168fb5
+    background: #168fb5;
 }
 
 

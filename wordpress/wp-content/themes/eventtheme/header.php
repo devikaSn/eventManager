@@ -12,7 +12,8 @@
 	</div>
 	<br><br>
 	<div class="sub-heading-container"> 
-		<h4></h4>
+		<h4>
+		</h4>
 	</div>
 	<?php if ( has_nav_menu( 'top' ) ) : ?>
 			<div class="navigation-top">
