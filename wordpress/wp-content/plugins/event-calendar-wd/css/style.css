@@ -432,7 +432,7 @@ div.ecwd-page-full table.cal_blue div.ecwd-event-arrow-right:before {
 
 div.ecwd-page-full table.cal_blue ul.events > li {
     margin-left: 0px !important;
-    border-bottom:1px solid #CFD7DE;
+    border-bottom:0px solid transparent;
     position: relative;
     padding: 7px  !important;
 }
@@ -449,9 +449,7 @@ div.ecwd-page-full table.cal_blue ul.more_events > li > a {
 div.ecwd-page-full table.cal_blue ul.events > li img{
     display:inline-block;
 }
-div.ecwd-page-full table.cal_blue ul.events > li:last-child {
-    border-bottom:0px;
-}
+
 .calendar_main .ecwd_calendar  div.event-details {
     font-size: 14px;
     font-style: italic;
