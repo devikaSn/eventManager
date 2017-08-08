@@ -434,6 +434,7 @@
                                         }
                                         $html .= '<div class="event-main-content">';
                                         if ($this->event_popup == "yes" && get_post_meta($event['id'], '', true)) {
+                                           
                                             $date_data = 'start-date-data="' . date("Y-m-d", strtotime($event['date'])) . '"';
                                             $date_data .= ' end-date-data="' . date("Y-m-d", strtotime($event['to'])) . '"';
                                             $html .= '<h3 class="event-title"  itemprop="name"><span ' . $date_data . ' class="ecwd_open_event_popup event' . $event['id'] . '" style="color:' . $event['color'] . ';">' . $event['title'] . '</span></h3>';
@@ -994,11 +995,11 @@
                         if ($this->event_popup == "yes" && get_post_meta($event['id'], '', true)) {
                             $date_data = 'start-date-data="' . date("Y-m-d", strtotime($cellevent['date'])) . '"';
                             $date_data .= ' end-date-data="'.date("Y-m-d", $cellevent['to']).'"';
-                            $eventcontent .= '<span ' . $date_data . ' class="ecwd_open_event_popup event' . $cellevent['id'] . '" itemprop="name">' . $cellevent['title'] . '</span>';
+                            $eventcontent .= '<span ' . $date_data . ' class="ecwd_open_event_popup event' . $cellevent['id'] . '" itemprop="name">' . $cellevent['title'] .'<br>' .date($this->timeformat, strtotime($cellevent['starttime'])). '</span>';
                         } elseif ($cellevent['permalink']) {
-                            $eventcontent .= '<a href="' . $cellevent['permalink'] . '" ' . $this->eventlinktarget . '><span itemprop="name">' . $cellevent['title'] . '</span></a>';
+                            $eventcontent .= '<a href="' . $cellevent['permalink'] . '" ' . $this->eventlinktarget . '><span itemprop="name">' . $cellevent['title'] . '<br>' .date($this->timeformat, strtotime($cellevent['starttime'])).'</span></a>';
                         } else {
-                            $eventcontent .= '<span itemprop="name">' . $cellevent['title'] . '</span>';
+                            $eventcontent .= '<span itemprop="name">' . $cellevent['title'] . '<br>' .date($this->timeformat, strtotime($cellevent['starttime'])).'</span>';
                         }
                     }
                     $this->seted_days[$cellevent['id']] = $date;
