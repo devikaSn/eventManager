@@ -1128,9 +1128,16 @@
                 }
                 $content .= apply_filters('format_content', $eventcontent);
                 if ($i > ($month_view_events_count - 1) && $this->displaytype !== 'mini') {
+                    $more_events_count= count($cellevents)-$month_view_events_count;
+                    if ($more_events_count > 1) {
+                         $more_events_text = '+'.$more_events_count.' more events';
+                    }else if($more_events_count == 1) {
+                        $more_events_text = '+'.$more_events_count.' more event';
+                    }
+                   
                     $content .= '<li class="ecwd-calendar-more-event">
                     <span class="ecwd-calendar-event-add">
-                         <span class="more_events_link">' . __('More events', 'ecwd') . '</span>
+                         <span class="more_events_link">' . __($more_events_text, 'ecwd') . '</span>
                     </span>
                     <div class="ecwd-more-events-container">                                                                       
                         <ul class="events more_events">' . $eventcontent . '</ul>          
