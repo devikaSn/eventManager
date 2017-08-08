@@ -757,3 +757,4 @@ jQuery(window).resize(function () {
         checkw = window_width;
     }
 });
+

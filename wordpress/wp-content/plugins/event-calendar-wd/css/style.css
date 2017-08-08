@@ -199,8 +199,14 @@ table.cal_blue.ecwd_calendar_container .no-events {
 table.cal_blue.ecwd_calendar_container .has-events {
     cursor:pointer;
 }
+
+table.cal_blue.ecwd_calendar_container .has-events.active {
+    background-color: blue;
+}
+
+
 table.cal_blue.ecwd_calendar_container .has-events:hover {
-    -webkit-box-shadow: rgba(0,0,0, 0.2) 0px 0px 6px;
+    -webkit-box-shadow: rgba(0,0,0, 0.2) 6px 6px 6px;
     box-shadow: rgba(0,0,0, 0.2) 0px 0px 6px;
 }
 table.cal_blue.ecwd_calendar_container .week-start {
@@ -429,6 +435,7 @@ div.ecwd-page-full table.cal_blue div.ecwd-event-arrow-right:before {
         padding: 5px;
 }
 */
+
 
 div.ecwd-page-full table.cal_blue ul.events > li {
     margin-left: 0px !important;
@@ -715,6 +722,7 @@ table.cal_blue.mini td ul.events li {
     right: 2px;
     background-color: #10738B;
 }
+
 table.cal_blue.mini td.current-day ul.events li {
     width:6px;
     height:6px !important;
