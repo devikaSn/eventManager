@@ -1011,9 +1011,6 @@
                             $show_events_detail_hover = false;
                         }
                     }
-                    if ($show_events_detail_hover) {
-                        echo "<input type='hidden' class='show_event_hover_info'>";
-                    }
                     $eventcontent .= '<div class="event-details-container"><div class="ecwd-event-arrow"></div><div class="event-details">';
                     if ($cellevent['title'] != '') {
                         $eventcontent .= '<div class="event-details-title">';
