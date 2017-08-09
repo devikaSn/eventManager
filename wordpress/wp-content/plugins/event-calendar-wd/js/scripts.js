@@ -227,7 +227,7 @@ if (typeof ecwd_js_init != "function")
             dayFull = jQuery(this).attr('data-date').split('-');
             dayFull = dayFull[2];
             ulEventFull = jQuery(this).find('ul.events');
-            if (parseInt(jQuery(this).closest('.ecwd_calendar').width()) <= 300 || parseInt(jQuery(window).width()) <= 768 || jQuery(this).closest('.ecwd_calendar').hasClass('ecwd-widget-mini') || $(this).closest('.ecwd_calendar').hasClass('ecwd-page-mini')) {
+            // if (parseInt(jQuery(this).closest('.ecwd_calendar').width()) <= 300 || parseInt(jQuery(window).width()) <= 768 || jQuery(this).closest('.ecwd_calendar').hasClass('ecwd-widget-mini') || $(this).closest('.ecwd_calendar').hasClass('ecwd-page-mini')) {
                 if (dayFull == jQuery(this).closest('.ecwd_calendar').find('.ecwd-events-day-details').attr('data-dayNumber')
                         && jQuery(this).closest('.ecwd_calendar').find('.ecwd-events-day-details').is(':empty') == false) {
                     jQuery(this).closest('.ecwd_calendar').find('.ecwd-events-day-details').html('');
@@ -235,7 +235,7 @@ if (typeof ecwd_js_init != "function")
                     showEvent(ulEventFull, this);
                 }
                 jQuery(this).closest('.ecwd_calendar').find('.ecwd-events-day-details').attr('data-dayNumber', dayFull);
-            }
+            // }
         });
 
         function showEvent(el, calendar) {

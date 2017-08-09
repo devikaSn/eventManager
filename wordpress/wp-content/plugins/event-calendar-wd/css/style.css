@@ -2793,3 +2793,20 @@ table.cal_blue.ecwd_calendar_container .no-events.active {
     color: white;
 }
 
+.ecwd-page-6 {
+    width: 70%;
+    float: left;
+}
+
+.ecwd-events-day-details {
+    width: 29%;
+    padding-left: 1%;
+    margin-top: 2%;
+    float: left;
+    text-align: center;
+}
+
+
+
+
+

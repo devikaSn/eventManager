@@ -22,7 +22,7 @@
 ?>
 </div>
 <?php
-	 get_sidebar(); 
+	 // get_sidebar(); 
 ?>
 </div>
 <div id="delimiter">

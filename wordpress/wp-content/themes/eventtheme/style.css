@@ -28,7 +28,7 @@ body {
 }
 
 #content {
-  	width: 75%;
+  	width: 100%;
   	border: 2px ##D4E6F1 solid; 
   	float: left; 
   	background-size: cover;
@@ -147,7 +147,7 @@ img {
 
 @media only screen and (max-width: 1024px) {
 	#content {
-		width: 99.4%;
+		width: 100%;
 	}
 	#sidebar {
 		width: 99.4%;
