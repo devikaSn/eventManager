@@ -200,15 +200,12 @@ table.cal_blue.ecwd_calendar_container .has-events {
     cursor:pointer;
 }
 
-table.cal_blue.ecwd_calendar_container .has-events.active {
-    background-color: #10738B;
-}
-
 
 table.cal_blue.ecwd_calendar_container .has-events:hover {
     -webkit-box-shadow: rgba(0,0,0, 0.2) 6px 6px 6px;
     box-shadow: rgba(0,0,0, 0.2) 0px 0px 6px;
 }
+
 table.cal_blue.ecwd_calendar_container .week-start {
     border-left:1px solid #D6DDE2;
 }
@@ -926,6 +923,7 @@ table.cal_blue.ecwd_calendar_container select {
     line-height: 17px;
     word-wrap: break-word;
 }
+
 .event-details-container .event-details-title h5  a {
     color: #585858;
     font-size: 17px;
@@ -2759,3 +2757,39 @@ table.ecwd_calendar_container  > tbody > tr >td{
 .ecwd_map_div, .ecwd_map_div span{
     color:black;
 }
+
+/* Adding active classes*/
+
+/* Selection of weekday event cells*/
+table.cal_blue.ecwd_calendar_container .has-events.active {
+    background: #10738B;
+}
+
+table.cal_blue.ecwd_calendar_container .events li > a.active {
+    color: white;
+}
+
+table.cal_blue.ecwd_calendar_container .events li > span.active {
+    color: white;
+}
+
+table.ecwd_theme_calendar .ecwd_calendar td .day-number.active {
+    background: #10738B;
+    color: white;
+}
+
+/* Selection of empty event weekday cells*/
+table.cal_blue.ecwd_calendar_container .no-events.active {
+    background: #10738B;
+    color: white;
+}
+
+/*Selection of event weekend cells*/
+.ecwd_theme_calendar table.cal_blue.ecwd_calendar_container .weekend.active {
+    background: #10738B;
+}
+
+.ecwd_theme_calendar table.cal_blue.ecwd_calendar_container .weekend.active .events li > a{
+    color: white;
+}
+
