@@ -1011,54 +1011,72 @@
                             $show_events_detail_hover = false;
                         }
                     }
+                    
                     $eventcontent .= '<div class="event-details-container"><div class="ecwd-event-arrow"></div><div class="event-details">';
-                    if ($cellevent['title'] != '') {
+
+                    if ($cellevent['title'] !== '') {
                         $eventcontent .= '<div class="event-details-title">';
-                        if (isset($cellevent['color']) && $cellevent['color'] !== '') {
-                            $eventcontent .= ' <span class="event-metalabel" style="background:' . $cellevent['color'] . '"></span>
-                                         <h5 style="color:' . $cellevent['color'] . '" itemprop="name">';
-                            if ($this->event_popup == "yes" && get_post_meta($event['id'], '', true)) {
-                                $date_data = 'start-date-data="' . date("Y-m-d", strtotime($cellevent['date'])) . '"';
-                                $date_data .= ' end-date-data="' . date("Y-m-d", $cellevent['to']) . '"';
-                                $eventcontent .= '<span ' . $date_data . ' class="ecwd_open_event_popup event' . $cellevent['id'] . ' "itemprop="url">' . $cellevent['title'] . '</span>';
-                            } else if (isset($cellevent['permalink']) && $cellevent['permalink'] !== '') {
-                                $eventcontent .= '<a href="' . $cellevent['permalink'] . '" ' . $this->eventlinktarget . ' style="color: ' . $cellevent['color'] . ' "itemprop="url">' . $cellevent['title'] . '</a>';
-                            } else {
-                                $eventcontent .= $cellevent['title'];
-                            }
-                            $eventcontent .= '</h5>
-                                         ';
-                        } else {
-                            $eventcontent .= ' <span class="event-metalabel"></span>
-                                         <h5 itemprop="name">';
-                            if ($this->event_popup == "yes" && get_post_meta($event['id'], '', true)) {
-                                $date_data = 'start-date-data="' . date("Y-m-d", strtotime($cellevent['date'])) . '"';
-                                $date_data .= ' end-date-data="' . date("Y-m-d", $cellevent['to']) . '"';
-                                $eventcontent .= '<span ' . $date_data . ' class="ecwd_open_event_popup event' . $cellevent['id'] . '">' . $cellevent['title'] . '</span>';
-                            } else if (isset($cellevent['permalink']) && $cellevent['permalink'] !== '') {
-                                $eventcontent .= '<a href="' . $cellevent['permalink'] . '" ' . $this->eventlinktarget . ' itemprop="url">' . $cellevent['title'] . '</a>';
-                            } else {
-                                $eventcontent .= $cellevent['title'];
-                            }
-                            $eventcontent .= '</h5>';
-                        }
-                        $eventcontent .= ' </div>';
-                    }
-                    if (isset($cellevent['all_day_event']) && $cellevent['all_day_event'] == 1) {
-                        $eventtime = '<div class="ecwd-time"><span class="metainfo"  itemprop="startDate" content="' . date('Y-m-d', $cellevent['from']) . 'T' . date('H:i', strtotime($cellevent['starttime'])) . '"> ' . __('All day', 'ecwd');
-                        $eventtime .= '</span>';
-                        $eventtime .= '</div>';
-                        $eventcontent .= $eventtime;
-                    } else {
-                        if ($cellevent['starttime'] != '') { // event details - hidden until clicked (full)
-                            $eventtime = '<div class="ecwd-time"><span class="metainfo"  itemprop="startDate" content="' . date('Y-m-d', $cellevent['from']) . 'T' . date('H:i', strtotime($cellevent['starttime'])) . '"> ' . date($this->timeformat, strtotime($cellevent['starttime']));
-                            if ($cellevent['endtime'] != '' && strtotime($cellevent['endtime']) !== strtotime($cellevent['starttime'])) {
-                                $eventtime .= "-" . date($this->timeformat, strtotime($cellevent['endtime']));
-                            }
+                        
+                        //Getting the event time 
+                        if (isset($cellevent['all_day_event']) && $cellevent['all_day_event'] == 1) {
+                            $eventtime = '<div class="ecwd-time"><span class="metainfo"  itemprop="startDate" content="' . date('Y-m-d', $cellevent['from']) . 'T' . date('H:i', strtotime($cellevent['starttime'])) . '"> ' . __('All day', 'ecwd');
                             $eventtime .= '</span>';
                             $eventtime .= '</div>';
-                            $eventcontent .= $eventtime;
+                        } else {
+                            if ($cellevent['starttime'] != '') { // event details - hidden until clicked (full)
+                                $eventtime = '<div class="ecwd-time"><span class="metainfo"  itemprop="startDate" content="' . date('Y-m-d', $cellevent['from']) . 'T' . date('H:i', strtotime($cellevent['starttime'])) . '"> ' . date($this->timeformat, strtotime($cellevent['starttime']));
+                                if ($cellevent['endtime'] != '' && strtotime($cellevent['endtime']) !== strtotime($cellevent['starttime'])) {
+                                    $eventtime .= "-" . date($this->timeformat, strtotime($cellevent['endtime']));
+                                }
+                                $eventtime .= '</span>';
+                                $eventtime .= '</div>';
+                            }
                         }
+
+                        //Getting event venue
+                        $eventvenue = '';
+                        if($cellevent['venue'] != '') {
+                            $eventvenue = $cellevent['venue'];
+                        }
+
+                        //Appending details to event 
+                       
+                        $eventcontent .= '<div class="event-title-info" style="width:68%;float:left;text-align:left">
+                                               <h5 style="color:#5C5C5C">' . $cellevent['title'] . '</h5>
+                                               '. $eventtime .'
+                                          </div>
+                                          <div class="event-view-details" style="width:30%;float:left;border:0.5px solid black;">
+                                            <p> <a href="' . $cellevent['permalink'] . '" ' . $this->eventlinktarget . ' style="color: ' . $cellevent['color'] . ' "itemprop="url">View Details</a></p>
+                                          </div>';
+                        // if (isset($cellevent['color']) && $cellevent['color'] !== '') {
+                        //     $eventcontent .= ' <span class="event-metalabel" style="background:' . $cellevent['color'] . '"></span>
+                        //                  <h5 style="color:' . $cellevent['color'] . '" itemprop="name">';
+                        //     if ($this->event_popup == "yes" && get_post_meta($event['id'], '', true)) {
+                        //         $date_data = 'start-date-data="' . date("Y-m-d", strtotime($cellevent['date'])) . '"';
+                        //         $date_data .= ' end-date-data="' . date("Y-m-d", $cellevent['to']) . '"';
+                        //         $eventcontent .= '<span ' . $date_data . ' class="ecwd_open_event_popup event' . $cellevent['id'] . ' "itemprop="url">' . $cellevent['title'] . '</span>';
+                        //     } else if (isset($cellevent['permalink']) && $cellevent['permalink'] !== '') {
+                        //         $eventcontent .= '<a href="' . $cellevent['permalink'] . '" ' . $this->eventlinktarget . ' style="color: ' . $cellevent['color'] . ' "itemprop="url">' . $cellevent['title'] . '</a>';
+                        //     } else {
+                        //         $eventcontent .= $cellevent['title'];
+                        //     }
+                        //     $eventcontent .= '</h5>
+                        //                  ';
+                        // } else {
+                        //     $eventcontent .= ' <span class="event-metalabel"></span>
+                        //                  <h5 itemprop="name">';
+                        //     if ($this->event_popup == "yes" && get_post_meta($event['id'], '', true)) {
+                        //         $date_data = 'start-date-data="' . date("Y-m-d", strtotime($cellevent['date'])) . '"';
+                        //         $date_data .= ' end-date-data="' . date("Y-m-d", $cellevent['to']) . '"';
+                        //         $eventcontent .= '<span ' . $date_data . ' class="ecwd_open_event_popup event' . $cellevent['id'] . '">' . $cellevent['title'] . '</span>';
+                        //     } else if (isset($cellevent['permalink']) && $cellevent['permalink'] !== '') {
+                        //         $eventcontent .= '<a href="' . $cellevent['permalink'] . '" ' . $this->eventlinktarget . ' itemprop="url">' . $cellevent['title'] . '</a>';
+                        //     } else {
+                        //         $eventcontent .= $cellevent['title'];
+                        //     }
+                        //     $eventcontent .= '</h5>';
+                        // }
+                        // $eventcontent .= ' </div>';
                     }
                     if ($cellevent['from'] != '') { // event details - hidden until clicked (full)
                         $eventdate = '<div class="ecwd-date"><span class="metainfo"> ' . date($this->dateformat, strtotime($cellevent['date']));

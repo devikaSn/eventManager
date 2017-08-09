@@ -2793,6 +2793,7 @@ table.cal_blue.ecwd_calendar_container .no-events.active {
     color: white;
 }
 
+/*Style the side bar events*/
 .ecwd-page-6 {
     width: 70%;
     float: left;
@@ -2806,7 +2807,9 @@ table.cal_blue.ecwd_calendar_container .no-events.active {
     text-align: center;
 }
 
-
+.calendar_main .ecwd_calendar div.event-details  {
+    width: 100%;
+}
 
 
 
