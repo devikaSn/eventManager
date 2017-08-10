@@ -1121,7 +1121,7 @@
                     $image                = $this->getAndReplaceFirstImage($cellevent['details']);
                     $ecwd_has_thumb = has_post_thumbnail($cellevent['id']);
                     if ($cellevent['details'] != '' || $ecwd_has_thumb || $cellevent['image']) {
-                        $eventcontent .= '<div  class="ecwd-detalis" itemprop="description">';
+                        $eventcontent .= '<div  class="ecwd-detalis" style="text-align:left" itemprop="description">';
                         if ($ecwd_has_thumb || $cellevent['image']) {
                             if ($ecwd_has_thumb) {
                                 $eventcontent .= get_the_post_thumbnail($cellevent['id'], 'thumbnail',array("itemprop"=>"image"));
@@ -1134,7 +1134,7 @@
                         }
                         $desc = $cellevent['details'] ? $cellevent['details'] : $this->eventemptytext;
                         $desc = apply_filters('format_content', $desc);
-                        $eventcontent .= $desc . '</div>';
+                        $eventcontent .= $desc .'</div>';
                     }
                     $eventcontent .= '</div><div class="ecwd-event-arrow-right"></div>';
                     $eventcontent .= '</li> ';
