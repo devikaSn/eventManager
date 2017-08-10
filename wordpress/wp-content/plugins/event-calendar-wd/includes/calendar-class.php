@@ -1041,11 +1041,11 @@
 
                         //Appending details to event 
                        
-                        $eventcontent .= '<div class="event-title-info" style="width:68%;float:left;text-align:left">
-                                               <h5 style="color:#5C5C5C">' . $cellevent['title'] . '</h5>
+                        $eventcontent .= '<div class="event-title-info">
+                                               <h5>' . $cellevent['title'] . '</h5>
                                                '. $eventtime .'
                                           </div>
-                                          <div class="event-view-details" style="width:30%;float:left;border:0.5px solid black;">
+                                          <div class="event-view-details">
                                             <p> <a href="' . $cellevent['permalink'] . '" ' . $this->eventlinktarget . ' style="color: ' . $cellevent['color'] . ' "itemprop="url">View Details</a></p>
                                           </div>';
                         // if (isset($cellevent['color']) && $cellevent['color'] !== '') {
@@ -1096,27 +1096,27 @@
                         $eventcontent .= '</div>';
                     }
 
-                    if ($cellevent['location'] !== '') {
-                        $eventcontent .= '<div class="event-venue" itemprop="location" itemscope itemtype="http://schema.org/Place">';
-                        if (isset($cellevent['venue']['name'])) {
-                            $eventcontent .= '<div class="ecwd-venue" ><span itemprop="name"><a href="' . $cellevent['venue']['permalink'] . '">' . $cellevent['venue']['name'] . '</a></span></div>';
-                        }
-                        if (isset($cellevent['location']) && $cellevent['location'] != '') {
-                            $eventcontent .= '<span class="ecwd_hidden" itemprop="name">' . $cellevent['location'] . '</span>';
-                            $eventcontent .= '<div class="ecwd-location" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><span>' . $cellevent['location'] . '</span></div>';
-                        }
-                        $eventcontent .= '</div>';
-                    }
-                    if (isset($cellevent['link']) && $cellevent['link'] != '') {
-                        $eventcontent .= '<div  class="ecwd-link"> <a href="' . $cellevent['link'] . '"  itemprop="url">' . $cellevent['link'] . '</a></div>';
-                    }
-                    $cellevent['details'] = $cellevent['details'] == '' ? $this->eventemptytext : $cellevent['details'];
+                    // if ($cellevent['location'] !== '') {
+                    //     $eventcontent .= '<div class="event-venue" itemprop="location" itemscope itemtype="http://schema.org/Place">';
+                    //     if (isset($cellevent['venue']['name'])) {
+                    //         $eventcontent .= '<div class="ecwd-venue" ><span itemprop="name"><a href="' . $cellevent['venue']['permalink'] . '">' . $cellevent['venue']['name'] . '</a></span></div>';
+                    //     }
+                    //     if (isset($cellevent['location']) && $cellevent['location'] != '') {
+                    //         $eventcontent .= '<span class="ecwd_hidden" itemprop="name">' . $cellevent['location'] . '</span>';
+                    //         $eventcontent .= '<div class="ecwd-location" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><span>' . $cellevent['location'] . '</span></div>';
+                    //     }
+                    //     $eventcontent .= '</div>';
+                    // }
+                    // if (isset($cellevent['link']) && $cellevent['link'] != '') {
+                    //     $eventcontent .= '<div  class="ecwd-link"> <a href="' . $cellevent['link'] . '"  itemprop="url">' . $cellevent['link'] . '</a></div>';
+                    // }
+                    // $cellevent['details'] = $cellevent['details'] == '' ? $this->eventemptytext : $cellevent['details'];
 
-                    if (isset($cellevent['link']) && $cellevent['link'] != '') {
-                        $eventcontent .= '<div  class="ecwd-link" itemprop="url"> <a href="' . $cellevent['link'] . '"  itemprop="url">' . $cellevent['link'] . '</a></div>';
-                    }else{
-                        $eventcontent .= '<span class="hidden" itemprop="url">' . get_post_permalink($cellevent['id']) . '</span>';
-                    }
+                    // if (isset($cellevent['link']) && $cellevent['link'] != '') {
+                    //     $eventcontent .= '<div  class="ecwd-link" itemprop="url"> <a href="' . $cellevent['link'] . '"  itemprop="url">' . $cellevent['link'] . '</a></div>';
+                    // }else{
+                    //     $eventcontent .= '<span class="hidden" itemprop="url">' . get_post_permalink($cellevent['id']) . '</span>';
+                    // }
 
                     $image                = $this->getAndReplaceFirstImage($cellevent['details']);
                     $ecwd_has_thumb = has_post_thumbnail($cellevent['id']);
@@ -1132,7 +1132,7 @@
                             $eventcontent .= '<img itemprop="image" src="' . $image['image'] . '" />';
                             $cellevent['details'] = $image['content'];
                         }
-                        $desc = $cellevent['details'] ? $cellevent['details'] : $this->eventemptytext;
+                        $eventcontent .= '<div class="ecwd-venue" style="color:#5C5C5C" ><span itemprop="name">' . $cellevent['venue']['name'] . '</span></div>';
                         $desc = apply_filters('format_content', $desc);
                         $eventcontent .= $desc .'</div>';
                     }

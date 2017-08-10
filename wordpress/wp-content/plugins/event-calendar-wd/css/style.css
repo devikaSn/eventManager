@@ -2811,5 +2811,21 @@ table.cal_blue.ecwd_calendar_container .no-events.active {
     width: 100%;
 }
 
+.event-title-info {
+    width:68%;
+    float:left;
+    text-align:left
+}
 
+.event-title-info h5 {
+    color:#10738B;
+}
 
+.event-view-details {
+    width:30%;
+    float:left;
+    border:0.5px solid black;
+}
+.ecwd-events-day-details .event-details-title {
+    padding: 15px 3px;
+}
