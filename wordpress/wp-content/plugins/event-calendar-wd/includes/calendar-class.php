@@ -984,6 +984,7 @@
                         $eventcontent .= ' no-cat-image ';
                     }
                     $eventcontent .= '">';
+
                     if ($this->displaytype != 'mini') {
                         if (isset($cellevent['terms']['ecwd_taxonomy_image']) && $this->displaytype != 'mini') {
                             if ($cellevent['terms']['ecwd_taxonomy_image'] != '') {
@@ -992,6 +993,7 @@
                           $eventcontent .= ' <span class="event-metalabel" style="background:' . $cellevent['color'] . '"></span>';
                           } */
                         }
+
                         if ($this->event_popup == "yes" && get_post_meta($event['id'], '', true)) {
                             $date_data = 'start-date-data="' . date("Y-m-d", strtotime($cellevent['date'])) . '"';
                             $date_data .= ' end-date-data="'.date("Y-m-d", $cellevent['to']).'"';
@@ -1013,7 +1015,7 @@
                     }
                     
                     $eventcontent .= '<div class="event-details-container"><div class="ecwd-event-arrow"></div><div class="event-details">';
-
+                   
                     if ($cellevent['title'] !== '') {
                         $eventcontent .= '<div class="event-details-title">';
                         
@@ -1032,15 +1034,9 @@
                                 $eventtime .= '</div>';
                             }
                         }
-
-                        //Getting event venue
-                        $eventvenue = '';
-                        if($cellevent['venue'] != '') {
-                            $eventvenue = $cellevent['venue'];
-                        }
+                        // print_r( date('d.F', $cellevent['from']));
 
                         //Appending title details to event 
-                        
                         $eventcontent .= '<div class="event-title-info">
                                                <h5>' . $cellevent['title'] . '</h5>
                                                '. $eventtime .'
@@ -1063,9 +1059,6 @@
                     // }
                     $eventcontent .= '</div><div class="ecwd-event-arrow-right"></div>';
                     $eventcontent .= '</li> ';
-                    //                } else {
-                    //                    //$eventcontent .= $cellevent['title'];
-                    //                }
                 }
                 $content .= apply_filters('format_content', $eventcontent);
                 if ($i > ($month_view_events_count - 1) && $this->displaytype !== 'mini') {
