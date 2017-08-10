@@ -1048,94 +1048,13 @@
                                           <div class="event-view-details">
                                             <p> <a href="' . $cellevent['permalink'] . '" ' . $this->eventlinktarget . ' style="color: ' . $cellevent['color'] . ' "itemprop="url">View Details</a></p>
                                           </div>';
-                        // if (isset($cellevent['color']) && $cellevent['color'] !== '') {
-                        //     $eventcontent .= ' <span class="event-metalabel" style="background:' . $cellevent['color'] . '"></span>
-                        //                  <h5 style="color:' . $cellevent['color'] . '" itemprop="name">';
-                        //     if ($this->event_popup == "yes" && get_post_meta($event['id'], '', true)) {
-                        //         $date_data = 'start-date-data="' . date("Y-m-d", strtotime($cellevent['date'])) . '"';
-                        //         $date_data .= ' end-date-data="' . date("Y-m-d", $cellevent['to']) . '"';
-                        //         $eventcontent .= '<span ' . $date_data . ' class="ecwd_open_event_popup event' . $cellevent['id'] . ' "itemprop="url">' . $cellevent['title'] . '</span>';
-                        //     } else if (isset($cellevent['permalink']) && $cellevent['permalink'] !== '') {
-                        //         $eventcontent .= '<a href="' . $cellevent['permalink'] . '" ' . $this->eventlinktarget . ' style="color: ' . $cellevent['color'] . ' "itemprop="url">' . $cellevent['title'] . '</a>';
-                        //     } else {
-                        //         $eventcontent .= $cellevent['title'];
-                        //     }
-                        //     $eventcontent .= '</h5>
-                        //                  ';
-                        // } else {
-                        //     $eventcontent .= ' <span class="event-metalabel"></span>
-                        //                  <h5 itemprop="name">';
-                        //     if ($this->event_popup == "yes" && get_post_meta($event['id'], '', true)) {
-                        //         $date_data = 'start-date-data="' . date("Y-m-d", strtotime($cellevent['date'])) . '"';
-                        //         $date_data .= ' end-date-data="' . date("Y-m-d", $cellevent['to']) . '"';
-                        //         $eventcontent .= '<span ' . $date_data . ' class="ecwd_open_event_popup event' . $cellevent['id'] . '">' . $cellevent['title'] . '</span>';
-                        //     } else if (isset($cellevent['permalink']) && $cellevent['permalink'] !== '') {
-                        //         $eventcontent .= '<a href="' . $cellevent['permalink'] . '" ' . $this->eventlinktarget . ' itemprop="url">' . $cellevent['title'] . '</a>';
-                        //     } else {
-                        //         $eventcontent .= $cellevent['title'];
-                        //     }
-                        //     $eventcontent .= '</h5>';
-                        // }
-                        // $eventcontent .= ' </div>';
                     }
-                    if ($cellevent['from'] != '') { // event details - hidden until clicked (full)
-                        $eventdate = '<div class="ecwd-date"><span class="metainfo"> ' . date($this->dateformat, strtotime($cellevent['date']));
-                        if ($cellevent['to'] != '' && $cellevent['to'] != $cellevent['from']) {
-                            $eventdate .= "-" . date($this->dateformat, $cellevent['to']);
-                        }
-                        $eventdate .= '</span>';
-                        $eventdate .= '<span class="ecwd_hidden"  itemprop="endDate" content="' . date('Y-m-d', $cellevent['to']) . 'T' . date('H:i', strtotime($cellevent['endtime'])) . '">'.'</span>';
-                        $eventdate .= '</div>';
-                        $eventcontent .= $eventdate;
-                    }
-                    if (isset($cellevent['organizers']) && count($cellevent['organizers']) > 0) {
-                        $eventcontent .= '<div class="event-organizers">';
-                        foreach ($cellevent['organizers'] as $organizer) {
-                            $eventcontent .= '<div class="event-organizer" itemprop="organizer"> <a href="' . $organizer['permalink'] . '">' . $organizer['name'] . '</a></div>';
-                        }
-                        $eventcontent .= '</div>';
-                    }
-
-                    // if ($cellevent['location'] !== '') {
-                    //     $eventcontent .= '<div class="event-venue" itemprop="location" itemscope itemtype="http://schema.org/Place">';
-                    //     if (isset($cellevent['venue']['name'])) {
-                    //         $eventcontent .= '<div class="ecwd-venue" ><span itemprop="name"><a href="' . $cellevent['venue']['permalink'] . '">' . $cellevent['venue']['name'] . '</a></span></div>';
-                    //     }
-                    //     if (isset($cellevent['location']) && $cellevent['location'] != '') {
-                    //         $eventcontent .= '<span class="ecwd_hidden" itemprop="name">' . $cellevent['location'] . '</span>';
-                    //         $eventcontent .= '<div class="ecwd-location" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><span>' . $cellevent['location'] . '</span></div>';
-                    //     }
-                    //     $eventcontent .= '</div>';
-                    // }
-                    // if (isset($cellevent['link']) && $cellevent['link'] != '') {
-                    //     $eventcontent .= '<div  class="ecwd-link"> <a href="' . $cellevent['link'] . '"  itemprop="url">' . $cellevent['link'] . '</a></div>';
-                    // }
-                    // $cellevent['details'] = $cellevent['details'] == '' ? $this->eventemptytext : $cellevent['details'];
-
-                    // if (isset($cellevent['link']) && $cellevent['link'] != '') {
-                    //     $eventcontent .= '<div  class="ecwd-link" itemprop="url"> <a href="' . $cellevent['link'] . '"  itemprop="url">' . $cellevent['link'] . '</a></div>';
-                    // }else{
-                    //     $eventcontent .= '<span class="hidden" itemprop="url">' . get_post_permalink($cellevent['id']) . '</span>';
-                    // }
-
-                    $image                = $this->getAndReplaceFirstImage($cellevent['details']);
-                    $ecwd_has_thumb = has_post_thumbnail($cellevent['id']);
-                    if ($cellevent['details'] != '' || $ecwd_has_thumb || $cellevent['image']) {
-                        $eventcontent .= '<div  class="ecwd-detalis" style="text-align:left" itemprop="description">';
-                        if ($ecwd_has_thumb || $cellevent['image']) {
-                            if ($ecwd_has_thumb) {
-                                $eventcontent .= get_the_post_thumbnail($cellevent['id'], 'thumbnail',array("itemprop"=>"image"));
-                            } else {
-                                $eventcontent .= '<img itemprop="image" src="' . $cellevent['image'] . '" />';
-                            }
-                        } elseif ($image['image'] != null) {
-                            $eventcontent .= '<img itemprop="image" src="' . $image['image'] . '" />';
-                            $cellevent['details'] = $image['content'];
-                        }
-                        $eventcontent .= '<div class="ecwd-venue" style="color:#5C5C5C" ><span itemprop="name">' . $cellevent['venue']['name'] . '</span></div>';
-                        $desc = apply_filters('format_content', $desc);
-                        $eventcontent .= $desc .'</div>';
-                    }
+                    //appending event venue details
+                   
+                    $eventcontent .= '<div  class="ecwd-detalis" style="text-align:left" itemprop="description">';
+                    $eventcontent .= '<div class="ecwd-venue" style="color:#5C5C5C" ><span itemprop="name">' . $cellevent['venue']['name'] . '</span></div>';
+                    $desc = apply_filters('format_content', $desc);
+                    $eventcontent .= $desc .'</div>';
                     $eventcontent .= '</div><div class="ecwd-event-arrow-right"></div>';
                     $eventcontent .= '</li> ';
                     //                } else {
