@@ -1034,7 +1034,7 @@
                                 $eventtime .= '</div>';
                             }
                         }
-                        // print_r( date('d.F', $cellevent['from']));
+                        
 
                         //Appending title details to event 
                         $eventcontent .= '<div class="event-title-info">
