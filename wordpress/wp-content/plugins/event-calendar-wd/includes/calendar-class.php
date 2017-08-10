@@ -1039,8 +1039,8 @@
                             $eventvenue = $cellevent['venue'];
                         }
 
-                        //Appending details to event 
-                       
+                        //Appending title details to event 
+                        
                         $eventcontent .= '<div class="event-title-info">
                                                <h5>' . $cellevent['title'] . '</h5>
                                                '. $eventtime .'
@@ -1048,13 +1048,19 @@
                                           <div class="event-view-details">
                                             <p> <a href="' . $cellevent['permalink'] . '" ' . $this->eventlinktarget . ' style="color: ' . $cellevent['color'] . ' "itemprop="url">View Details</a></p>
                                           </div>';
+                        //appending event venue details
+                        $eventcontent .= '<div  class="ecwd-detalis" style="text-align:left" itemprop="description">';
+                        $eventcontent .= '<div class="ecwd-venue" style="color:#5C5C5C" ><span itemprop="name">' . $cellevent['venue']['name'] . '</span></div>';
+                        $desc = apply_filters('format_content', $desc);
+                        $eventcontent .= $desc .'</div>';
                     }
-                    //appending event venue details
-                   
-                    $eventcontent .= '<div  class="ecwd-detalis" style="text-align:left" itemprop="description">';
-                    $eventcontent .= '<div class="ecwd-venue" style="color:#5C5C5C" ><span itemprop="name">' . $cellevent['venue']['name'] . '</span></div>';
-                    $desc = apply_filters('format_content', $desc);
-                    $eventcontent .= $desc .'</div>';
+
+                    // else {
+                    //       $eventcontent .= '<div class="event-title-info">
+                    //                        <div class="event-view-details">
+                    //                         <p> No events to display</p>
+                    //                       </div></div>';
+                    // }
                     $eventcontent .= '</div><div class="ecwd-event-arrow-right"></div>';
                     $eventcontent .= '</li> ';
                     //                } else {
